@@ -1,0 +1,40 @@
+/* src/index.css */
+
+/* Reset di base per evitare margini strani */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    /* Colore di sfondo scuro per tutto il sito */
+    background-color: #1a1a1a;
+    /* Colore del testo base */
+    color: white;
+    /* Font per tutto il sito */
+    font-family: 'Arial', sans-serif;
+    /* Assicura che la pagina sia alta almeno quanto lo schermo */
+    min-height: 100vh;
+}
+
+/* Togliamo la sottolineatura blu brutta da TUTTI i link del sito */
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* Stile per le scrollbar (opzionale, ma fa figo su Chrome) */
+::-webkit-scrollbar {
+    width: 10px;
+}
+::-webkit-scrollbar-track {
+    background: #1a1a1a;
+}
+::-webkit-scrollbar-thumb {
+    background: #333;
+    border-radius: 5px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #f39c12;
+}
