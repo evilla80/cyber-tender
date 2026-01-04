@@ -25,7 +25,6 @@
     margin-bottom: 50px;
 }
 
-/* --- HOME PAGE: GRIGLIA --- */
 .drink-grid {
     display: flex;
     flex-wrap: wrap;
@@ -34,7 +33,6 @@
 }
 
 
-/* --- DETTAGLI PAGE --- */
 .back-link {
     color: #f39c12;
     font-weight: bold;

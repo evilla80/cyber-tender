@@ -1,7 +1,7 @@
 import React from "react";
 import style from "./Footer.module.css";
-import disco from "../assets/image/disco.png"
-import bicocca from "../assets/image/unimib.jpg"
+import disco from "../../assets/image/disco.png"
+import bicocca from "../../assets/image/unimib.jpg"
 import {NavLink} from "react-router-dom";
 
 function Footer(props) {
