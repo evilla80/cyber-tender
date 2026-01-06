@@ -2,25 +2,41 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import style from './CocktailDetails.module.css'; // Importiamo il CSS Module
 
-function CocktailDetails() {
+function CocktailDetails({drinks}) {
     const { id } = useParams();
     const [cocktail, setCocktail] = useState(null);
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        const fetchDetails = async () => {
-            try {
-                const response = await fetch(`https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${id}`);
-                const data = await response.json();
-                setCocktail(data.drinks[0]);
-            } catch (error) {
-                console.error("Errore:", error);
-            }
-        };
+        if (drinks.length === 0) return;
 
+        const fetchDetails = async () => {
+            setLoading(true);
+
+            const foundDrink = drinks.find((drink) => drink.customId === Number(id))
+
+            if (foundDrink) {
+                const apiId = foundDrink.idDrink;
+                try {
+                    const response = await fetch(`https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${apiId}`);
+                    const data = await response.json();
+                    setCocktail(data.drinks[0]);
+                } catch (error) {
+                    console.error("Errore fetch dettagli:", error);
+                } }
+            else {
+                console.error("Drink non trovato");
+            }
+            setLoading(false);
+        };
         fetchDetails();
     }, [id]);
 
-    if (!cocktail) return <div className={style.loading}>Preparazione drink...</div>;
+    if (loading || !cocktail) {
+        return <div className={style.loading}>
+            {drinks.length === 0 ? "Caricamento lista..." : "Preparazione drink..."}
+        </div>;
+    }
 
     const getIngredients = () => {
         let ingredients = [];

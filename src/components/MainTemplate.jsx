@@ -1,4 +1,5 @@
 import React from "react";
+
 import Footer from "./Footer/Footer.jsx";
 import Header from "./Header/Header.jsx";
 
@@ -10,17 +11,17 @@ function MainTemplate({ children, footerCourse, footerCourseLink, navItems, logo
                 logo={logo}
             />
 
-            <div className="my-5">
+            <div className="main-content">
 
                 {children}
 
             </div>
-            <Footer
-                course={footerCourse}
-                courseLink={footerCourseLink}
-                navItems = {navItems}
-            />
 
+            <Footer
+                courseName={footerCourse}
+                courseLink={footerCourseLink}
+                navItems={navItems}
+            />
         </>
     )
 }

@@ -1,8 +1,9 @@
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 40px 20px;
+body {
+    background-color: #2c2c2c;
+    margin: 0;
+    font-family: sans-serif;
 }
+
 
 .loading {
     text-align: center;
@@ -117,4 +118,27 @@
     line-height: 1.8;
     font-size: 1.1rem;
     color: #ccc;
+}
+
+.h1 {
+    font-size: 3rem;
+    color: #f39c12;
+}
+
+
+/* 1. Il contenitore principale deve essere alto ALMENO quanto lo schermo */
+.page-wrapper {
+    display: flex;
+    flex-direction: column; /* Mette gli elementi uno sotto l'altro */
+    min-height: 100vh;      /* 100vh = 100% dell'altezza della finestra (viewport) */
+}
+
+/* 2. La parte centrale deve "mangiare" tutto lo spazio libero */
+.main-content {
+    flex-grow: 1;           /* Questo è il segreto! Spinge il footer giù */
+
+    /* Le tue regole di layout precedenti per centrare il contenuto vanno qui: */
+    width: 100%;
+    margin: 0 auto;
+    padding: 20px;
 }

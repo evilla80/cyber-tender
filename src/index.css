@@ -1,40 +1,63 @@
 /* src/index.css */
 
-/* Reset di base per evitare margini strani */
+/* Reset universale */
 * {
     box-sizing: border-box;
 }
 
-body {
+:root {
+    --primary-color: #f39c12;
+    --text-color: #cccccc;
+    --bg-color: #1a1a1a;
+}
+
+#root {
+    min-height: 100vh;      /* Occupa ALMENO il 100% dell'altezza visibile */
+    display: flex;          /* Attiva Flexbox */
+    flex-direction: column; /* Mette Header -> Main -> Footer in colonna */
+}
+
+
+html, body {
+    width: 100%;
     margin: 0;
     padding: 0;
-    /* Colore di sfondo scuro per tutto il sito */
-    background-color: #1a1a1a;
-    /* Colore del testo base */
+    overflow-x: hidden;
+}
+
+body {
+    background-color: #202020;
     color: white;
-    /* Font per tutto il sito */
     font-family: 'Arial', sans-serif;
-    /* Assicura che la pagina sia alta almeno quanto lo schermo */
     min-height: 100vh;
 }
 
-/* Togliamo la sottolineatura blu brutta da TUTTI i link del sito */
 a {
     text-decoration: none;
     color: inherit;
 }
 
-/* Stile per le scrollbar (opzionale, ma fa figo su Chrome) */
-::-webkit-scrollbar {
-    width: 10px;
+h1, h2, h3, h4, h5, h6 {
+    color: var(--primary-color); /* Usa la variabile (o #f39c12) */
+    margin-top: 0; /* Rimuove lo spazio sopra fastidioso */
+    font-weight: 700;
 }
-::-webkit-scrollbar-track {
-    background: #1a1a1a;
+
+/* Stile base per tutti i paragrafi */
+p {
+    color: var(--text-color); /* Solitamente i p non si fanno arancioni per leggibilità */
+    line-height: 1.6; /* Migliora la lettura */
+    margin-bottom: 1rem;
 }
-::-webkit-scrollbar-thumb {
-    background: #333;
-    border-radius: 5px;
+
+/* Stile base per i link */
+a {
+    color: inherit; /* Prende il colore del testo padre */
+    text-decoration: none;
+    transition: color 0.3s;
 }
-::-webkit-scrollbar-thumb:hover {
-    background: #f39c12;
+
+a:hover {
+    color: var(--primary-color); /* Diventa arancione quando ci passi sopra */
 }
+

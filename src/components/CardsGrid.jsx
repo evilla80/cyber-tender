@@ -7,7 +7,7 @@ function CardsGrid({drinkList}) {
         <div className = "drink-grid">
             {drinkList.map((drink) => (
                 <SingleCard key={drink.idDrink}
-                            id={drink.idDrink}
+                            id={drink.customId}
                             name={drink.strDrink}
                             image={drink.strDrinkThumb}/>
             ))}

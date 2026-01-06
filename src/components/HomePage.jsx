@@ -1,34 +1,25 @@
-// HomePage.jsx
-import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import SingleCard from "./SingleCard.jsx";
-import CardsGrid from "./CardsGrid.jsx";
+import React from 'react';
+import CardsGrid from './CardsGrid';
+import SingleCard from "./SingleCard.jsx"; // Assumo tu abbia questo componente
 
-function HomePage (){
-    const [drinks, setDrinks] = useState([]);
-    const [loading, setLoading] = useState(true);
+// Ricevi drinks e loading tramite props destructuring
+function HomePage({ drinks, loading }) {
 
-    useEffect(() => {
-        const fetchDrinks = async () => {
-            const response = await fetch('https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=Cocktail');
-            const data = await response.json();
-            setDrinks(data.drinks);
-            setLoading(false);
-        };
+    if (loading) {
+        return <div style={{textAlign: 'center', marginTop: '50px', color: '#fff'}}>Shakerando i dati... 🍹</div>;
+    }
 
-        fetchDrinks();
-    }, []);
-
-    if (loading) return <div style={{textAlign: 'center', marginTop: '50px', color: '#fff'}}>Shakerando i dati... 🍹</div>;
+    const drinkFiltered = drinks.filter((drink) => drink.customId === 1|| drink.id === 2 || drink.customId === 3);
 
     return (
         <>
             <h1>Barman Digitale</h1>
+            {/* Ora usi drinks che ti arriva da App */}
             <p>La lista dei {drinks.length} cocktail più famosi al mondo</p>
 
-            <CardsGrid drinkList={drinks}/>
+            <CardsGrid drinkList={drinkFiltered} />
         </>
     );
-};
+}
 
 export default HomePage;
