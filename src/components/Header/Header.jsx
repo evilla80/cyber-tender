@@ -20,15 +20,10 @@ function Header({ navItems, logo }) {
     const itemList = navItems.map((item) => {
         return (
             <NavItem key={item.url} className={style.navItem}>
-                <NavLink
-                    to={item.url}
-                    // Logica per lo stile: se è attivo aggiunge la classe .activeLink
-                    className={({ isActive }) =>
-                        isActive
-                            ? `${style.navLink} ${style.activeLink}`
-                            : style.navLink
-                    }
-                >
+                <NavLink to={item.url}
+                         className={({ isActive }) =>
+                             isActive ? `${style.activeLink}` : ""
+                         }>
                     {item.text}
                 </NavLink>
             </NavItem>
@@ -51,8 +46,7 @@ function Header({ navItems, logo }) {
 
                     {/* Menu che collassa */}
                     <Collapse isOpen={isOpen} navbar>
-                        {/* ms-auto allinea le voci a destra. Usa mr-auto se usi Bootstrap 4 */}
-                        <Nav className="ms-auto" navbar>
+                        <Nav className="mr-auto" navbar>
                             {itemList}
                         </Nav>
                     </Collapse>

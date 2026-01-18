@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'; // Ricordati di importare qu
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import HomePage from './components/HomePage.jsx';
 import CocktailDetails from './components/CocktailDetails.jsx';
-import Logo from "./assets/image/drink.png";
+import Logo from "./assets/image/drink.svg";
 import MainTemplate from "./components/MainTemplate.jsx";
 import Menu from "./components/Menu.jsx";
 
