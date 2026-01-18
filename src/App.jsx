@@ -5,6 +5,7 @@ import CocktailDetails from './components/CocktailDetails.jsx';
 import Logo from "./assets/image/drink.svg";
 import MainTemplate from "./components/MainTemplate.jsx";
 import Menu from "./components/Menu.jsx";
+import './App.css'
 
 function App() {
     // 1. Definisci lo stato qui nel genitore
@@ -25,10 +26,8 @@ function App() {
 
                 const drinksModificati = data.drinks.map((drink, index) => {
                     return {
-                        ...drink, // 1. Copia tutte le proprietà originali (strDrink, strDrinkThumb, idDrink)
-
+                        ...drink,
                         customId: index + 1,
-
                         urlSlug: drink.strDrink.toLowerCase().replace(/\s+/g, '-')
                     };
                 });

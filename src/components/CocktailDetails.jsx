@@ -1,11 +1,23 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import {Navigate, NavLink, useParams} from 'react-router-dom';
 import style from './CocktailDetails.module.css'; // Importiamo il CSS Module
 
 function CocktailDetails({drinks}) {
-    const { id } = useParams();
+    let { id } = useParams();
     const [cocktail, setCocktail] = useState(null);
     const [loading, setLoading] = useState(true);
+
+    if (!/^\d+$/.test(id)) {
+        return <Navigate to="/404" replace />;
+    }
+
+    const numericId = Number(id)
+
+    const foundDrink = drinks.find((drink) => drink.customId === numericId);
+
+    if (!foundDrink) {
+        return <Navigate to="/404" replace />;
+    }
 
     useEffect(() => {
         if (drinks.length === 0) return;
@@ -13,20 +25,11 @@ function CocktailDetails({drinks}) {
         const fetchDetails = async () => {
             setLoading(true);
 
-            const foundDrink = drinks.find((drink) => drink.customId === Number(id))
+            const apiId = foundDrink.idDrink;
+            const response = await fetch(`https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${apiId}`);
+            const data = await response.json();
+            setCocktail(data.drinks[0]);
 
-            if (foundDrink) {
-                const apiId = foundDrink.idDrink;
-                try {
-                    const response = await fetch(`https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${apiId}`);
-                    const data = await response.json();
-                    setCocktail(data.drinks[0]);
-                } catch (error) {
-                    console.error("Errore fetch dettagli:", error);
-                } }
-            else {
-                console.error("Drink non trovato");
-            }
             setLoading(false);
         };
         fetchDetails();
@@ -54,7 +57,20 @@ function CocktailDetails({drinks}) {
     return (
         <div className={style.pageContainer}>
             <div className={style.contentWrapper}>
+                <div className={style.navigation}>
 
+                    {numericId > 1 &&
+                        <NavLink className={`${style.prev} ${style.navItem}`}
+                                 to={`/cocktail/${numericId - 1}`}>&lt; Prev</NavLink>
+                    }
+
+                    {/* Controllo lunghezza array più pulito */}
+                    {numericId < drinks.length &&
+                        <NavLink className={`${style.next} ${style.navItem}`}
+                                 to={`/cocktail/${numericId + 1}`}>Next &gt;</NavLink>
+                    }
+
+                </div>
                 <div className={style.detailsGrid}>
 
                     {/* Immagine */}
