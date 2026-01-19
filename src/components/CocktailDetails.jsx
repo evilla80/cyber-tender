@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import {Navigate, NavLink, useParams} from 'react-router-dom';
-import style from './CocktailDetails.module.css'; // Importiamo il CSS Module
+import style from './CocktailDetails.module.css';
 
 function CocktailDetails({drinks}) {
     let { id } = useParams();
     const [cocktail, setCocktail] = useState(null);
-    const [loading, setLoading] = useState(true);
 
     if (!/^\d+$/.test(id)) {
         return <Navigate to="/404" replace />;
@@ -23,21 +22,18 @@ function CocktailDetails({drinks}) {
         if (drinks.length === 0) return;
 
         const fetchDetails = async () => {
-            setLoading(true);
 
             const apiId = foundDrink.idDrink;
             const response = await fetch(`https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${apiId}`);
             const data = await response.json();
             setCocktail(data.drinks[0]);
-
-            setLoading(false);
         };
         fetchDetails();
     }, [id]);
 
-    if (loading || !cocktail) {
+    if ( !cocktail) {
         return <div className={style.loading}>
-            {drinks.length === 0 ? "Caricamento lista..." : "Preparazione drink..."}
+            { "Caricamento lista..." }
         </div>;
     }
 

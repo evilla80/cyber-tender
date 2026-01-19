@@ -1,0 +1,25 @@
+.container {
+    display: flex;
+    flex-direction: column; /* Mette gli elementi uno sotto l'altro */
+    align-items: center;    /* Centra orizzontalmente */
+    justify-content: center;/* Centra verticalmente (se hai un'altezza fissa) */
+    padding: 50px;
+    text-align: center;     /* Assicura che il testo vada al centro */
+}
+
+.errorImage {
+    width: 150px;  /* Imposta qui la grandezza che preferisci (es. 150px, 200px) */
+    height: auto;  /* Mantiene le proporzioni originali */
+    margin-bottom: 20px; /* Dà un po' di spazio tra immagine e titolo */
+}
+
+.h1 {
+    font-size: 3rem;
+    margin-bottom: 10px;
+}
+
+.h3 {
+    font-size: 1.5rem;
+    color: #fac098;
+    font-weight: 400;
+}

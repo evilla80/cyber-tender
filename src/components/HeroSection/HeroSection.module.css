@@ -1,0 +1,46 @@
+.container {
+    position: relative; /* Serve sempre come ancora per testo e overlay */
+    width: 100%;
+}
+
+.container img {
+    display: block;
+    width: 100%;
+    height: auto;
+    margin-bottom: 30px;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.3);
+    z-index: 1;
+}
+
+.textContainer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+
+    /* Centratura */
+    display: flex;
+    justify-content: center; /* Orizzontale */
+    align-items: center;     /* Verticale */
+          /* Per evitare che il testo tocchi i bordi su mobile */
+
+    h1 {
+        text-align: center;
+        margin: 0;
+        font-family: 'Georgia', 'Times New Roman', serif;
+        font-weight: 500;
+        font-style: italic;
+        letter-spacing: 1px;
+        text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.73);
+    }
+}

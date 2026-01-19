@@ -6,6 +6,7 @@ import Logo from "./assets/image/drink.svg";
 import MainTemplate from "./components/MainTemplate.jsx";
 import Menu from "./components/Menu.jsx";
 import './App.css'
+import DefaultPage from "./components/DefaultPage.jsx";
 
 function App() {
     // 1. Definisci lo stato qui nel genitore
@@ -53,7 +54,6 @@ function App() {
                 logo={Logo}
             >
                 <Routes>
-                    {/* 3. Passa i dati (drinks e loading) come PROPS ai figli */}
                     <Route
                         path="/"
                         element={<HomePage drinks={drinks} loading={loading} />}
@@ -67,6 +67,7 @@ function App() {
                     <Route path="/cocktail/:id" element={<CocktailDetails drinks={drinks}/>} />
 
                     <Route path="/info" element={<HomePage drinks={drinks} loading={loading} />} />
+                    <Route path = "*" element={<DefaultPage />} />
                 </Routes>
             </MainTemplate>
         </Router>

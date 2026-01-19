@@ -11,7 +11,7 @@ function MainTemplate({ children, footerCourse, footerCourseLink, navItems, logo
                 logo={logo}
             />
 
-            <div className="main-content">
+            <div className="main-content" style={{ width: '100%', padding: 0, margin: 0 }}>
 
                 {children}
 

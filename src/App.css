@@ -25,6 +25,7 @@
     flex-wrap: wrap;
     gap: 30px;
     justify-content: center;
+    margin-top: 20px;
 }
 
 
@@ -136,3 +137,5 @@
     margin: 0 auto;
     padding: 20px;
 }
+
+

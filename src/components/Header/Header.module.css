@@ -5,7 +5,8 @@
     top: 0;
     width: 100%;
     z-index: 1000;
-    margin-bottom: 20px;
+    padding: 0;
+    margin: 0;
     border-bottom: solid 2px #f39c12;
 }
 
