@@ -1,16 +1,16 @@
 .container {
     display: flex;
-    flex-direction: column; /* Mette gli elementi uno sotto l'altro */
-    align-items: center;    /* Centra orizzontalmente */
-    justify-content: center;/* Centra verticalmente (se hai un'altezza fissa) */
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     padding: 50px;
-    text-align: center;     /* Assicura che il testo vada al centro */
+    text-align: center;
 }
 
 .errorImage {
-    width: 150px;  /* Imposta qui la grandezza che preferisci (es. 150px, 200px) */
-    height: auto;  /* Mantiene le proporzioni originali */
-    margin-bottom: 20px; /* Dà un po' di spazio tra immagine e titolo */
+    width: 150px;
+    height: auto;
+    margin-bottom: 20px;
 }
 
 .h1 {
