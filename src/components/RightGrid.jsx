@@ -12,7 +12,7 @@ function RightGrid({title, message, img, showButton, buttonText, onButtonClick})
                         className={styles.button}
                         onClick={onButtonClick}
                     >
-                        {buttonText || "Scopri di più"} {/* Testo di default se non lo passi */}
+                        {buttonText}
                     </button>
                 )}
             </div>

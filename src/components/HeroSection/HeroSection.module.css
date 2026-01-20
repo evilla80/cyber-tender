@@ -27,19 +27,36 @@
     height: 100%;
     z-index: 2;
 
-    /* Centratura */
     display: flex;
-    justify-content: center; /* Orizzontale */
-    align-items: center;     /* Verticale */
-          /* Per evitare che il testo tocchi i bordi su mobile */
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 10px;
 
-    h1 {
-        text-align: center;
-        margin: 0;
-        font-family: 'Georgia', 'Times New Roman', serif;
-        font-weight: 500;
-        font-style: italic;
-        letter-spacing: 1px;
-        text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.73);
-    }
+    padding: 20px;
+    box-sizing: border-box;
 }
+
+.h1 {
+    text-align: center;
+    margin: 0;
+    font-size: 5rem;
+    font-family: 'Georgia', 'Times New Roman', serif;
+    font-weight: 800;
+    font-style: italic;
+    letter-spacing: 1px;
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.73);
+
+}
+
+.p {
+    text-align: center;
+    margin: 0;
+    font-family: 'Georgia', 'Times New Roman', serif;
+    font-size: 2rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-shadow: 3px 3px 6px rgb(0, 0, 0);
+
+}
+
