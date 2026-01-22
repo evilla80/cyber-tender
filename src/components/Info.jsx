@@ -1,6 +1,6 @@
 import drink from '../assets/image/info_drink.jpg'
 import React from "react";
-import RightGrid from "./RightGrid.jsx";
+import RightGrid from "./RightGrid/RightGrid.jsx";
 
 function Info(){
     const title="Scopri qualcosa su Cyber Tender..."

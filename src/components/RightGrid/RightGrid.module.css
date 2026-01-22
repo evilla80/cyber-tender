@@ -36,21 +36,3 @@
     display: block;
 }
 
-.button {
-    margin-top: 25px;
-    width: 70%;
-    min-width: 150px;
-    padding: 6px 12px;
-    background-color: #f39c12; /* Arancione (o usa il tuo colore primario) */
-    color: #fff7f3;
-    border: none;
-    border-radius: 8px;     /* Bordi arrotondati */
-    font-size: 1rem;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    align-self: center;
-}
-
-.button:hover {
-    background-color: #d35400;
-}

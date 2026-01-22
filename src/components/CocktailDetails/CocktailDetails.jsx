@@ -65,11 +65,9 @@ function CocktailDetails({drinks}) {
                         <NavLink className={`${style.next} ${style.navItem}`}
                                  to={`/cocktail/${numericId + 1}`}>Next &gt;</NavLink>
                     }
-
                 </div>
-                <div className={style.detailsGrid}>
 
-                    {/* Immagine */}
+                <div className={style.detailsGrid}>
                     <div className={style.imageWrapper}>
                         <img
                             src={cocktail.strDrinkThumb}
@@ -78,7 +76,6 @@ function CocktailDetails({drinks}) {
                         />
                     </div>
 
-                    {/* Dati e Ricetta */}
                     <div className={style.infoWrapper}>
                         <h1 className={style.title}>{cocktail.strDrink}</h1>
 
@@ -88,7 +85,7 @@ function CocktailDetails({drinks}) {
                             <span className={style.tag}>{cocktail.strGlass}</span>
                         </div>
 
-                        <h3 className={style.sectionTitle} style={{marginTop: 0}}>Ingredienti</h3>
+                        <h3 className={style.sectionTitle}>Ingredienti</h3>
                         <ul className={style.ingredientsList}>
                             {getIngredients().map((item, index) => (
                                 <li key={index} className={style.ingredientItem}>

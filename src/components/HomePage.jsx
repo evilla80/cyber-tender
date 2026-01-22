@@ -2,7 +2,7 @@ import React from 'react';
 import CardsGrid from './CardsGrid';
 import HeroSection from "./HeroSection/HeroSection.jsx";
 import HeroDrink from "../assets/image/drink.jpg"
-import RightGrid from "./RightGrid.jsx";
+import RightGrid from "./RightGrid/RightGrid.jsx";
 import InfoDrink from "../assets/image/scopri_drink.jpg"
 import {useNavigate} from "react-router-dom";
 
@@ -20,7 +20,7 @@ function HomePage({ drinks, loading }) {
         navigate('/Info')
     }
     function menuClick() {
-        navigate('/Menu')
+        navigate('/cocktail')
     }
     return (
         <>

@@ -1,4 +1,5 @@
 import styles from "./RightGrid.module.css";
+import NavigateButton from "../NavigateButton/NavigateButton.jsx";
 
 function RightGrid({title, message, img, showButton, buttonText, onButtonClick}){
 
@@ -8,12 +9,11 @@ function RightGrid({title, message, img, showButton, buttonText, onButtonClick})
                 <h1> {title} </h1>
                 <p> {message} </p>
                 {showButton && (
-                    <button
-                        className={styles.button}
-                        onClick={onButtonClick}
-                    >
-                        {buttonText}
-                    </button>
+                    <NavigateButton
+                        buttonText={buttonText}
+                        onPress={onButtonClick} />
+
+
                 )}
             </div>
             <div className={styles.imageWrapper}>

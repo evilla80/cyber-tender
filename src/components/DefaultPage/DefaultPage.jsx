@@ -1,4 +1,4 @@
-import error from "../assets/image/error.svg"
+import error from "../../assets/image/error.svg"
 import style from "./DefaultPage.module.css"
 
 function DefaultPage() {
