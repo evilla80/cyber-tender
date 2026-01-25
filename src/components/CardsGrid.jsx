@@ -1,16 +1,28 @@
 import React from "react";
 import SingleCard from "./SingleCard.jsx";
 import "../App.css";
+import style from './menu.module.css';
+import styles from "./Menu.module.css";
 
-function CardsGrid({drinkList}) {
+function CardsGrid({search, text, filteredList, showInputText}) {
     return (
-        <div className = "drink-grid">
-            {drinkList.map((drink) => (
-                <SingleCard key={drink.idDrink}
-                            id={drink.customId}
-                            name={drink.strDrink}
-                            image={drink.strDrinkThumb}/>
-            ))}
+        <div className={styles.container}>
+            {showInputText && (
+                <input className={style.input}
+                       type="text"
+                       id="myInput"
+                       value={text}
+                       onChange={search}
+                       placeholder="Cerca il cocktail per nome..."/>
+            )}
+            <div className = "drink-grid">
+                {filteredList.map((drink) => (
+                    <SingleCard key={drink.idDrink}
+                                id={drink.customId}
+                                name={drink.strDrink}
+                                image={drink.strDrinkThumb}/>
+                ))}
+            </div>
         </div>
     )
 }

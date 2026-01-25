@@ -1,3 +1,13 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin-top: 40px;
+}
+
+
 .switch {
     display: flex;
     margin: 30px 0 50px ;
@@ -23,8 +33,84 @@
     border-bottom-right-radius: 6px;
 }
 
-
 .option.active {
     background-color: #f8840a;
     color: white;
+}
+
+
+.table {
+    width: 95%;
+    border-collapse: collapse;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.table td {
+    padding: 12px 15px;
+    border-bottom: 1px solid #333;
+    vertical-align: middle;
+    color: #ffe1cb;
+    text-align: center;
+}
+
+
+.drinkCell {
+    width: 120px;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+}
+
+.image {
+    width: 70px;
+    height: 70px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.button{
+    display: inline-block;
+    padding: 6px 12px;
+    background-color: #f8840a;
+    color: #ffffff;
+    margin: 0;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    text-align: center;
+    width: fit-content;
+    transition: background-color 0.2s;
+}
+
+.button:hover {
+    background-color: #ff5600;
+    color: white;
+}
+
+.table tr:hover {
+    background-color: #252525;
+}
+
+.input {
+    width: 80%;
+    padding: 6px 16px;
+    border: 2px solid #f8840a;
+    background-color: #2e2e2e;
+    border-radius: 8px;
+    color: #ffe1cb;
+    margin-bottom: 40px;
+}
+
+.input {
+    width: 80%;
+    padding: 6px 16px;
+    border: 1px solid #f39c4b;
+    background-color: #2e2e2e;
+    border-radius: 8px;
+    color: #ffe1cb;
+    margin-bottom: 40px;
+}
+
+.input:hover {
+    background-color: #252525;
+    border: 2px solid #f8840a
 }

@@ -40,9 +40,16 @@ a {
     color: inherit;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1, h2, h3 {
     color: var(--primary-color); /* Usa la variabile (o #f39c12) */
-    margin-top: 0; /* Rimuove lo spazio sopra fastidioso */
+    margin-top: 20px;
+    font-weight: 700;
+    font-family: 'Georgia', 'Times New Roman', serif;
+}
+
+h4, h5, h6 {
+    color: var(--text-color);
+    margin-top: 10px;
     font-weight: 700;
     font-family: 'Georgia', 'Times New Roman', serif;
 }

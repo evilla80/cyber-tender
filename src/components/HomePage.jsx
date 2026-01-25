@@ -7,14 +7,16 @@ import InfoDrink from "../assets/image/scopri_drink.jpg"
 import {useNavigate} from "react-router-dom";
 
 function HomePage({ drinks, loading }) {
-    const title = "Scopri qualcosa in più sul nostro progetto"
-    const message = "proova prova priva"
+    const title = "Qualcosa in più sul nostro progetto"
+    const message = "Il piacere di un buon cocktail inizia dalla sua preparazione. Che tu sia un bartender " +
+        "o un appassionato, scopri la nostra guida completa per creare il tuo prossimo drink ideale."
     const navigate = useNavigate();
     if (loading) {
         return <div>Shakerando i dati...</div>;
     }
 
-    const drinkFiltered = drinks.filter((drink) => drink.customId === 1|| drink.customId === 4 || drink.customId === 5);
+    const drinkFiltered = drinks.filter((drink) =>
+        drink.customId === 9|| drink.customId === 4 || drink.customId === 5 || drink.customId === 6);
 
     function infoClick() {
         navigate('/Info')
@@ -30,11 +32,12 @@ function HomePage({ drinks, loading }) {
                 img={HeroDrink}
                 onButtonClick={menuClick}
             />
-            <div style={{padding: 70, backgroundColor: '#171717'}}>
-                <h2>Scopri i Drink di oggi</h2>
 
-                <CardsGrid drinkList={drinkFiltered} />
+            <div style={{padding: 70, backgroundColor: '#171717', textAlign: 'center'}}>
+                <h1 style={{marginBottom: 20}}>Scopri i Drink di oggi</h1>
+                <CardsGrid filteredList={drinkFiltered} showInputText={false}/>
             </div>
+
             <RightGrid title={title}
                        message={message}
                        img={InfoDrink}

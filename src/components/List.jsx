@@ -1,38 +1,32 @@
 import {NavLink} from "react-router-dom";
-import style from './list.module.css';
-import {useState} from "react";
+import style from './menu.module.css';
+import styles from "./Menu.module.css";
 
-function List({drinkList}) {
-    const [searchText, setSearchText] = useState("");
-    const handleSearch = (e) => {
-        setSearchText(e.target.value);
-    }
+function List({search, text, filteredList}) {
 
-    const filteredDrinkList = drinkList.filter((drink) => {
-        return drink.strDrink.toLowerCase().includes(searchText.toLowerCase());
-    });
 
     return (
-        <>
-            <input type="text"
+        <div className={styles.container}>
+            <input className={style.input}
+                   type="text"
                    id="myInput"
-                   value={searchText}
-                   onChange={handleSearch}
+                   value={text}
+                   onChange={search}
                    placeholder="Cerca il cocktail per nome..."/>
 
             <table className={style.table}>
                 <tbody>
-                {filteredDrinkList.map((drink) => (
+                {filteredList.map((drink) => (
                     <tr key={drink.idDrink}>
                         <td className={style.drinkCell}
-                            style={{width: "20%"}}>
+                            style={{width: "25%"}}>
                             <img
                                 src={drink.strDrinkThumb}
                                 className={style.image}
                             />
                         </td>
-                        <td style={{width: "50%"}}><strong> {drink.strDrink}</strong></td>
-                        <td className={style.drinkCell} style={{width: "50%"}}>
+                        <td style={{width: "50%"}}><h5> {drink.strDrink}</h5></td>
+                        <td className={style.drinkCell} style={{width: "25%"}}>
                             <NavLink
                                 className={style.button}
                                 to={`/cocktail/${drink.customId}`}
@@ -44,7 +38,7 @@ function List({drinkList}) {
                 ))}
                 </tbody>
             </table>
-        </>
+        </div>
     );
 }
 
