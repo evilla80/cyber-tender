@@ -15,12 +15,12 @@ function Menu({ drinks, loading }) {
             <p>Scegli il tuo drink preferito</p>
             <div className={styles.switch}>
                 <div className={clsx(styles.option, {[styles.active]: displayGrid})}
-                    onClick={() => setDisplayGrid(true)}>
-                    Grid
+                     onClick={() => setDisplayGrid(true)}>
+                    Griglia
                 </div>
                 <div className={clsx(styles.option, {[styles.active]: !displayGrid})}
-                    onClick={() => setDisplayGrid(false)}>
-                    Table
+                     onClick={() => setDisplayGrid(false)}>
+                    Lista
                 </div>
             </div>
             {
@@ -28,7 +28,7 @@ function Menu({ drinks, loading }) {
                     <CardsGrid
                         drinkList={drinks}
                     /> :
-                    <List />
+                    <List drinkList={drinks}/>
             }
         </div>
     );

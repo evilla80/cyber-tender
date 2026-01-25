@@ -7,10 +7,10 @@
 .option {
     display: inline-block;
     padding: 4px 16px;
-    background: white;
+    background: #ffe9e3;
     cursor: pointer;
-    border: 1px solid #dd092f;
-    color: #dd092f;
+    border: 1px solid #f8840a;
+    color: #f8840a;
 }
 
 .option:first-child {
@@ -25,6 +25,6 @@
 
 
 .option.active {
-    background-color: #dd092f;
+    background-color: #f8840a;
     color: white;
 }
