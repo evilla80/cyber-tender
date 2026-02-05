@@ -2,6 +2,14 @@ import drink from '../assets/image/info_drink.jpg'
 import React from "react";
 import RightGrid from "./RightGrid/RightGrid.jsx";
 
+/**
+ * Componente il cui unico scopo è quello di preparare
+ * il testo e l'immagine specifica per la sezione di Info
+ * e passarli a RightGrid
+ *
+ * @returns {React.JSX.Element}
+ * @constructor
+ */
 function Info(){
     const title="Scopri qualcosa su Cyber Tender..."
     const message=(

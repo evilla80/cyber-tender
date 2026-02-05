@@ -1,9 +1,8 @@
 import {NavLink} from "react-router-dom";
-import style from './menu.module.css';
-import styles from "./Menu.module.css";
+import style from './Menu/Menu.module.css';
+import styles from "./Menu/Menu.module.css";
 
 function List({search, text, filteredList}) {
-
 
     return (
         <div className={styles.container}>

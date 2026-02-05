@@ -1,6 +1,14 @@
 import error from "../../assets/image/error.svg"
 import style from "./DefaultPage.module.css"
 
+/**
+ * Componente che restituisce una pagina di errore
+ * quando un drink non viene trovato oppure
+ * vengono inseriti parametri sbagliati nell'url
+ *
+ * @returns {JSX.Element}
+ * @constructor
+ */
 function DefaultPage() {
     return (
         <div className={style.container}>

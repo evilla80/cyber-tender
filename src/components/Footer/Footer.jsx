@@ -4,11 +4,20 @@ import disco from "../../assets/image/disco.png"
 import bicocca from "../../assets/image/unimib.jpg"
 import {NavLink} from "react-router-dom";
 
-function Footer(props) {
-    const {courseName, courseLink, navItems} = props;
+/**
+ * Componente Footer dell'applicazione
+ * Mostra un menù di navigazione, il nome del corso e
+ * due loghi relativi all'università
+ *
+ * @param navItems - menù di navigazione: array di oggetti {url, text}
+ * @returns {React.JSX.Element}
+ * @constructor
+ */
 
+function Footer({navItems}) {
+
+    // Genera in modo dinamico gli url di navigazione
     const itemList = navItems.map((item) => {
-        // removed activeClassName={style.active} from NavLink props
         return (
             <li key={item.url} className="nav-item">
                 <NavLink to={item.url}>
@@ -20,29 +29,21 @@ function Footer(props) {
 
     return (
         <footer className={style.footer}>
-
             <div className="container-fluid">
-
                 <div className="row">
-
                     <div className="col">
                         <nav className={style.footerNav}>
-
                             <ul className="nav flex-column">
                                 {itemList}
                             </ul>
-
                         </nav>
-
                     </div>
 
                     <div className="col-md-auto">
-
                         <div className={`d-flex ${style.copyright}`}>
-
                             <div id={style.course}>
-                                <a href={courseLink} target="_blank">
-                                    {courseName}
+                                <a href="https://elearning.unimib.it/course/info.php?id=61231" target="_blank">
+                                    "Applicazioni Web: Progettazione e Sviluppo"
                                 </a>
                             </div>
 
@@ -59,13 +60,9 @@ function Footer(props) {
                             </div>
 
                         </div>
-
                     </div>
-
                 </div>
-
             </div>
-
         </footer>
     )
 

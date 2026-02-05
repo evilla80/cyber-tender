@@ -1,8 +1,8 @@
 import React, {useState} from 'react';
-import CardsGrid from './CardsGrid';
+import CardsGrid from '../CardsGrid.jsx';
 import styles from './Menu.module.css'
 import clsx from 'clsx';
-import List from "./List.jsx";
+import List from "../List.jsx";
 
 function Menu({ drinks, loading }) {
     const [displayGrid, setDisplayGrid] = useState("true");

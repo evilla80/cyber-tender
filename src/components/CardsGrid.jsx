@@ -1,8 +1,8 @@
 import React from "react";
-import SingleCard from "./SingleCard.jsx";
+import SingleCard from "./SingleCard/SingleCard.jsx";
 import "../App.css";
-import style from './menu.module.css';
-import styles from "./Menu.module.css";
+import style from './Menu/Menu.module.css';
+import styles from "./Menu/Menu.module.css";
 
 function CardsGrid({search, text, filteredList, showInputText}) {
     return (

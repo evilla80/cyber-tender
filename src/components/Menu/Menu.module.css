@@ -4,7 +4,8 @@
     align-items: center;
     justify-content: center;
     width: 100%;
-    margin-top: 40px;
+    margin: 0;
+    padding: 40px;
 }
 
 
@@ -90,15 +91,6 @@
     background-color: #252525;
 }
 
-.input {
-    width: 80%;
-    padding: 6px 16px;
-    border: 2px solid #f8840a;
-    background-color: #2e2e2e;
-    border-radius: 8px;
-    color: #ffe1cb;
-    margin-bottom: 40px;
-}
 
 .input {
     width: 80%;
