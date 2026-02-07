@@ -30,6 +30,9 @@ function Info(){
     )
     return (
         <>
+            {/*Utilizza Right Grid come nel componente Info,
+            vengono passati titolo, messaggio, immagine e il bottone
+            non viene visualizzato*/}
             <RightGrid title = {title} message = {message} img = {drink}/>
         </>
     )

@@ -22,7 +22,7 @@ function RightGrid({title, message, img, showButton, buttonText, onButtonClick})
             <div className={styles.info}>
                 <h1> {title} </h1>
                 <p> {message} </p>
-                // se showButton è false React ignora NavigateButton
+                {/* se showButton è false React ignora NavigateButton*/}
                 {showButton && (
                     <NavigateButton
                         buttonText={buttonText}
