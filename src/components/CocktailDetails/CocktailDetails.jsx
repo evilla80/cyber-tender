@@ -1,66 +1,63 @@
 import React, { useEffect, useState } from 'react';
 import {Navigate, NavLink, useParams} from 'react-router-dom';
 import style from './CocktailDetails.module.css';
+import { extractIngredients } from '../../utils/ingredientsUtils.jsx';
 
 function CocktailDetails({drinks}) {
     let { id } = useParams();
     const [cocktail, setCocktail] = useState(null);
-
-    if (!/^\d+$/.test(id)) {
-        return <Navigate to="/404" replace />;
-    }
-
+    const [loading, setLoading] = useState(false)
+    //Rendo l'id numerico e cerco il drink corrispondente nell'array drinks
     const numericId = Number(id)
-
     const foundDrink = drinks.find((drink) => drink.customId === numericId);
 
-    if (!foundDrink) {
-        return <Navigate to="/404" replace />;
-    }
 
     useEffect(() => {
-        if (drinks.length === 0) return;
+        //se non troviamo il drink non facciamo partire la fetch
+        if(!foundDrink) return; 
 
         const fetchDetails = async () => {
-
+            setLoading(true)
             const apiId = foundDrink.idDrink;
             const response = await fetch(`https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${apiId}`);
             const data = await response.json();
             setCocktail(data.drinks[0]);
+            setLoading(false)
         };
         fetchDetails();
-    }, [id]);
+    }, [id, foundDrink]);
 
-    if ( !cocktail) {
+    //se l'array drinks è vuoto, vuol dire che il genitore
+    //sta ancora scaricando i dati
+    if (drinks.length === 0) {
         return <div className={style.loading}>
             { "Caricamento lista..." }
         </div>;
     }
+    //se l'array è pieno ma non è un numero o non
+    //un numero corretto allora mando alla pagina 404
+    if (!/^\d+$/.test(id) || !foundDrink) {
+        return <Navigate to="/404" replace />;
+    }
 
-    const getIngredients = () => {
-        let ingredients = [];
-        for (let i = 1; i <= 15; i++) {
-            if (cocktail[`strIngredient${i}`]) {
-                ingredients.push({
-                    name: cocktail[`strIngredient${i}`],
-                    measure: cocktail[`strMeasure${i}`] || ''
-                });
-            }
-        }
-        return ingredients;
-    };
+    if (loading || !cocktail) {
+        return <div className={style.loading}>
+            { "Caricamento lista..." }
+        </div>;
+    }
+    
+    const ingredientList = extractIngredients(cocktail)
+    const instructions = cocktail.strInstructionsIT || cocktail.strInstructions;
 
     return (
         <div className={style.pageContainer}>
             <div className={style.contentWrapper}>
+                {/*Permette la navigazione prev/next tramite NavLink */}
                 <div className={style.navigation}>
-
                     {numericId > 1 &&
                         <NavLink className={`${style.prev} ${style.navItem}`}
                                  to={`/cocktail/${numericId - 1}`}>&lt; Prev</NavLink>
                     }
-
-                    {/* Controllo lunghezza array più pulito */}
                     {numericId < drinks.length &&
                         <NavLink className={`${style.next} ${style.navItem}`}
                                  to={`/cocktail/${numericId + 1}`}>Next &gt;</NavLink>
@@ -68,6 +65,7 @@ function CocktailDetails({drinks}) {
                 </div>
 
                 <div className={style.detailsGrid}>
+                    {/*Colonna a sinistra per l'immagine*/}
                     <div className={style.imageWrapper}>
                         <img
                             src={cocktail.strDrinkThumb}
@@ -75,10 +73,11 @@ function CocktailDetails({drinks}) {
                             className={style.drinkImage}
                         />
                     </div>
-
+                    {/*Colonna a destra per le informazioni*/}
                     <div className={style.infoWrapper}>
+                        {/*Nome del cocktail*/}
                         <h1 className={style.title}>{cocktail.strDrink}</h1>
-
+                        {/*Tag per le varie categorie*/}
                         <div className={style.tagsContainer}>
                             <span className={style.tag}>{cocktail.strCategory}</span>
                             <span className={style.tag}>{cocktail.strAlcoholic}</span>
@@ -86,18 +85,22 @@ function CocktailDetails({drinks}) {
                         </div>
 
                         <h3 className={style.sectionTitle}>Ingredienti</h3>
+                        {/*Lista degli ingredienti con le misure*/}
                         <ul className={style.ingredientsList}>
-                            {getIngredients().map((item, index) => (
+                            {ingredientList.map((item, index) => (
                                 <li key={index} className={style.ingredientItem}>
-                                    <span>{item.name}</span>
-                                    <span className={style.measure}>{item.measure}</span>
+                                    <strong>{item.name}</strong>
+                                    {item.measure && (
+                                        <span className={style.measure}> {item.measure}</span>
+                                    )}
                                 </li>
                             ))}
                         </ul>
 
+                        {/* Istruzioni */}
                         <h3 className={style.sectionTitle}>Istruzioni</h3>
                         <p className={style.instructionsText}>
-                            {cocktail.strInstructionsIT || cocktail.strInstructions}
+                            {instructions}
                         </p>
                     </div>
                 </div>
