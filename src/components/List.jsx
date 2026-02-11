@@ -1,6 +1,6 @@
 import {NavLink} from "react-router-dom";
-import style from './Menu/Menu.module.css';
-import styles from "./Menu/Menu.module.css";
+import style from '../pages/Menu/Menu.module.css';
+import styles from "../pages/Menu/Menu.module.css";
 
 /**
  * Alternativa visuale a CardsGrid.

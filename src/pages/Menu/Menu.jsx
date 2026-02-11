@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
-import CardsGrid from '../CardsGrid.jsx';
+import CardsGrid from '../../components/CardsGrid.jsx';
 import styles from './Menu.module.css'
-import List from "../List.jsx";
+import List from "../../components/List.jsx";
 
 /**
  * Questo componente permette di visualizzare il menù in due modi diversi,

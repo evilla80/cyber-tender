@@ -3,49 +3,52 @@ import {Navigate, NavLink, useParams} from 'react-router-dom';
 import style from './CocktailDetails.module.css';
 import { extractIngredients } from '../../utils/ingredientsUtils.jsx';
 
+/**
+ * Componente che permette la visualizzazione del dettaglio di un drink,
+ * recuperando l'id del cocktail da visualizzare dall'url e cercandolo nella lista.
+ * Una volta trovato il cocktail scarica altre informazioni dell'API.
+ * (ingredienti, misure e istruzioni).
+ * Gestisce anche la navigazione tra il dettaglio dei cocktail con prec/succ
+ *
+ * @param drinks
+ * @returns {React.JSX.Element}
+ * @constructor
+ */
 function CocktailDetails({drinks}) {
+    // prendo l'id che viene inserito nell'url
     let { id } = useParams();
     const [cocktail, setCocktail] = useState(null);
-    const [loading, setLoading] = useState(false)
+    //se l'id passato non è un numero mando alla pagina 404
+    if (!/^\d+$/.test(id)) {
+        return <Navigate to="/404" replace />;
+    }
     //Rendo l'id numerico e cerco il drink corrispondente nell'array drinks
     const numericId = Number(id)
     const foundDrink = drinks.find((drink) => drink.customId === numericId);
+    // se non trovo nessun drink che corrisponda mando alla pagina 404
+    if (!foundDrink) {
+        return <Navigate to="/404" replace />;
+    }
 
 
     useEffect(() => {
-        //se non troviamo il drink non facciamo partire la fetch
-        if(!foundDrink) return; 
-
         const fetchDetails = async () => {
-            setLoading(true)
             const apiId = foundDrink.idDrink;
             const response = await fetch(`https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${apiId}`);
             const data = await response.json();
             setCocktail(data.drinks[0]);
-            setLoading(false)
         };
         fetchDetails();
-    }, [id, foundDrink]);
+    }, [id]);
 
-    //se l'array drinks è vuoto, vuol dire che il genitore
-    //sta ancora scaricando i dati
-    if (drinks.length === 0) {
+    //se cocktail è ancora vuoto, allora la fetch non ha finito
+    if (!cocktail) {
         return <div className={style.loading}>
-            { "Caricamento lista..." }
+            { "Caricamento dettagli..." }
         </div>;
     }
-    //se l'array è pieno ma non è un numero o non
-    //un numero corretto allora mando alla pagina 404
-    if (!/^\d+$/.test(id) || !foundDrink) {
-        return <Navigate to="/404" replace />;
-    }
 
-    if (loading || !cocktail) {
-        return <div className={style.loading}>
-            { "Caricamento lista..." }
-        </div>;
-    }
-    
+
     const ingredientList = extractIngredients(cocktail)
     const instructions = cocktail.strInstructionsIT || cocktail.strInstructions;
 
@@ -56,14 +59,13 @@ function CocktailDetails({drinks}) {
                 <div className={style.navigation}>
                     {numericId > 1 &&
                         <NavLink className={`${style.prev} ${style.navItem}`}
-                                 to={`/cocktail/${numericId - 1}`}>&lt; Prev</NavLink>
+                                 to={`/cocktail/${numericId - 1}`}>&lt; Precedente</NavLink>
                     }
                     {numericId < drinks.length &&
                         <NavLink className={`${style.next} ${style.navItem}`}
-                                 to={`/cocktail/${numericId + 1}`}>Next &gt;</NavLink>
+                                 to={`/cocktail/${numericId + 1}`}>Successivo &gt;</NavLink>
                     }
                 </div>
-
                 <div className={style.detailsGrid}>
                     {/*Colonna a sinistra per l'immagine*/}
                     <div className={style.imageWrapper}>

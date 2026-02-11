@@ -1,8 +1,8 @@
 import React from 'react';
-import CardsGrid from './CardsGrid';
-import HeroSection from "./HeroSection/HeroSection.jsx";
+import CardsGrid from '../components/CardsGrid.jsx';
+import HeroSection from "../components/HeroSection/HeroSection.jsx";
 import HeroDrink from "../assets/image/drink.jpg"
-import RightGrid from "./RightGrid/RightGrid.jsx";
+import RightGrid from "../components/RightGrid/RightGrid.jsx";
 import InfoDrink from "../assets/image/scopri_drink.jpg"
 import {useNavigate} from "react-router-dom";
 

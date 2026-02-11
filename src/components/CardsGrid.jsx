@@ -1,8 +1,8 @@
 import React from "react";
 import SingleCard from "./SingleCard/SingleCard.jsx";
 import "../App.css";
-import style from './Menu/Menu.module.css';
-import styles from "./Menu/Menu.module.css";
+import style from '../pages/Menu/Menu.module.css';
+import styles from "../pages/Menu/Menu.module.css";
 
 /**
  * Alternativa visuale a List

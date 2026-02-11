@@ -1,6 +1,6 @@
 import drink from '../assets/image/info_drink.jpg'
 import React from "react";
-import RightGrid from "./RightGrid/RightGrid.jsx";
+import RightGrid from "../components/RightGrid/RightGrid.jsx";
 
 /**
  * Componente il cui unico scopo è quello di preparare
