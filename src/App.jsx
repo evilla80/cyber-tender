@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import {BrowserRouter as Router, Routes, Route, HashRouter} from 'react-router-dom';
 import HomePage from './pages/HomePage.jsx';
 import CocktailDetails from './pages/CocktailDetails/CocktailDetails.jsx';
 import Logo from "./assets/image/drink.svg";
@@ -59,7 +59,7 @@ function App() {
     }, []);
 
     return (
-        <Router basename="/cyber-tender">
+        <HashRouter>
             {/* main template che avvolge tutte le route*/}
             <MainTemplate
                 navItems={nav}
@@ -68,8 +68,7 @@ function App() {
                 {/*Decide che componente renderizzare in base all'url*/}
                 <Routes>
                     {/* url per andare all'HomePage, gli vengono passati i drinks e loading*/}
-                    <Route
-                        path="/"
+                    <Route path="/"
                         element={<HomePage drinks={drinks} loading={loading} />}
                     />
                     {/* url per andare al Menu, gli vengono passati i drinks e loading*/}
@@ -87,7 +86,7 @@ function App() {
                     <Route path = "*" element={<DefaultPage />} />
                 </Routes>
             </MainTemplate>
-        </Router>
+        </HashRouter>
     );
 }
 

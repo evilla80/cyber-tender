@@ -6,7 +6,7 @@ Cyber Tender permette agli utenti di consultare un elenco di cocktail, permetten
 di visualizzare le loro ricette. 
 
 L'applicazione si interfaccia con [TheCocktailDB API](https://www.thecocktaildb.com/) 
-per fornire dati in tempo reale.
+per fornire dati in tempo reale ed è consultabile tramite **GitHub Pages**.
 
 ## Tecnologie
 Il progetto è stato realizzato utilizzando le seguenti tecnologie e librerie:
