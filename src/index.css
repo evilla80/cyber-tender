@@ -1,20 +1,11 @@
-/* src/index.css */
-
-/* Reset universale */
 * {
     box-sizing: border-box;
 }
 
-:root {
-    --primary-color: #f39c12;
-    --text-color: #cccccc;
-    --bg-color: #1a1a1a;
-}
-
 #root {
-    min-height: 100vh;      /* Occupa ALMENO il 100% dell'altezza visibile */
-    display: flex;          /* Attiva Flexbox */
-    flex-direction: column; /* Mette Header -> Main -> Footer in colonna */
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
 
@@ -27,7 +18,7 @@ html, body {
 
 body {
     background-color: #1a1a1a;
-    color: white;
+    color: #cccccc;
     font-family: 'Arial', sans-serif;
     min-height: 100vh;
     margin: 0;
@@ -35,41 +26,35 @@ body {
     box-sizing: border-box;
 }
 
-a {
-    text-decoration: none;
-    color: inherit;
-}
-
 h1, h2, h3 {
-    color: var(--primary-color); /* Usa la variabile (o #f39c12) */
+    color: #f39c12;
     margin-top: 20px;
     font-weight: 700;
     font-family: 'Georgia', 'Times New Roman', serif;
 }
 
 h4, h5, h6 {
-    color: var(--text-color);
+    color: #cccccc;
     margin-top: 10px;
     font-weight: 700;
     font-family: 'Georgia', 'Times New Roman', serif;
 }
 
-/* Stile base per tutti i paragrafi */
+
 p {
-    color: var(--text-color); /* Solitamente i p non si fanno arancioni per leggibilità */
-    line-height: 1.6; /* Migliora la lettura */
+    color: #cccccc;
+    line-height: 1.6;
     margin-bottom: 1rem;
 }
 
-/* Stile base per i link */
 a {
-    color: inherit; /* Prende il colore del testo padre */
+    color: inherit;
     text-decoration: none;
     transition: color 0.3s;
 }
 
 a:hover {
-    color: var(--primary-color); /* Diventa arancione quando ci passi sopra */
+    color: #f39c12;
 }
 
 

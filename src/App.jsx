@@ -59,7 +59,7 @@ function App() {
     }, []);
 
     return (
-        <Router>
+        <Router basename="/cyber-tender">
             {/* main template che avvolge tutte le route*/}
             <MainTemplate
                 navItems={nav}

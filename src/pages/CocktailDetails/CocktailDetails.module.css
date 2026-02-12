@@ -6,13 +6,6 @@
     font-family: Arial, sans-serif;
 }
 
-.loading {
-    text-align: center;
-    margin-top: 50px;
-    color: white;
-    font-size: 1.5rem;
-}
-
 .navigation {
     width: 100%;
     display: flex;

@@ -1,5 +1,4 @@
 import React from "react";
-
 import Footer from "./Footer/Footer.jsx";
 import Header from "./Header/Header.jsx";
 

@@ -41,7 +41,6 @@
 
 .navItem a:hover {
     color: #ff7400 !important;
-    text-decoration: none !important; /* Assicura niente sottolineatura anche al passaggio del mouse */
 }
 
 .navItem .activeLink {
