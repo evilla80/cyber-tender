@@ -18,20 +18,15 @@ function CocktailDetails({drinks}) {
     // prendo l'id che viene inserito nell'url
     let { id } = useParams();
     const [cocktail, setCocktail] = useState(null);
-    //se l'id passato non è un numero mando alla pagina 404
-    if (!/^\d+$/.test(id)) {
-        return <Navigate to="/404" replace />;
-    }
+    // controllo se l'id passato è un numero
+    const isValidId = /^\d+$/.test(id);
     //Rendo l'id numerico e cerco il drink corrispondente nell'array drinks
     const numericId = Number(id)
     const foundDrink = drinks.find((drink) => drink.customId === numericId);
-    // se non trovo nessun drink che corrisponda mando alla pagina 404
-    if (!foundDrink) {
-        return <Navigate to="/404" replace />;
-    }
-
 
     useEffect(() => {
+        if (!foundDrink) return;
+
         const fetchDetails = async () => {
             const apiId = foundDrink.idDrink;
             const response = await fetch(`https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${apiId}`);
@@ -41,14 +36,25 @@ function CocktailDetails({drinks}) {
         fetchDetails();
     }, [id]);
 
-    //se cocktail è ancora vuoto, allora la fetch non ha finito
-    if (!cocktail) {
+    //se drinks è ancora vuoto, bisogna aspettare
+    if (!drinks || drinks.length === 0) {
         return <div className={style.loading}>
             { "Caricamento dettagli..." }
         </div>;
     }
 
+    // se l'id passato non è un numero oppure
+    // se non trovo nessun drink che corrisponda mando alla pagina 404
+    if (!isValidId || !foundDrink) {
+        return <Navigate to="/404" replace />;
+    }
 
+    // se cocktail è ancora vuoto, allora la fetch non ha finito
+    if (!cocktail) {
+        return <div className={style.loading}>
+            { "Caricamento dettagli..." }
+        </div>;
+    }
     const ingredientList = extractIngredients(cocktail)
     const instructions = cocktail.strInstructionsIT || cocktail.strInstructions;
 

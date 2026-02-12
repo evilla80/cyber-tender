@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import {BrowserRouter as Router, Routes, Route, HashRouter} from 'react-router-dom';
+import { Routes, Route} from 'react-router-dom';
 import HomePage from './pages/HomePage.jsx';
 import CocktailDetails from './pages/CocktailDetails/CocktailDetails.jsx';
 import Logo from "./assets/image/drink.svg";
@@ -29,7 +29,7 @@ function App() {
     const nav = [
         {url: "/", text: "Home"},
         {url: "/cocktail", text: "Menù"},
-        {url: "Info", text: "Info"},
+        {url: "/info", text: "Info"},
     ];
     // Effetto collaterale che viene fatto andare solo una volta, al montaggio del componente
     useEffect(() => {
@@ -59,34 +59,31 @@ function App() {
     }, []);
 
     return (
-        <HashRouter>
-            {/* main template che avvolge tutte le route*/}
-            <MainTemplate
-                navItems={nav}
-                logo={Logo}
-            >
-                {/*Decide che componente renderizzare in base all'url*/}
-                <Routes>
-                    {/* url per andare all'HomePage, gli vengono passati i drinks e loading*/}
-                    <Route path="/"
-                        element={<HomePage drinks={drinks} loading={loading} />}
-                    />
-                    {/* url per andare al Menu, gli vengono passati i drinks e loading*/}
-                    <Route path="/cocktail"
-                           element={<Menu drinks={drinks} loading={loading} />}
-                    />
-                    {/* url per andare alla pagina di dettaglio, la rotta è parametrica :id
+        <MainTemplate
+            navItems={nav}
+            logo={Logo}
+        >
+            {/*Decide che componente renderizzare in base all'url*/}
+            <Routes>
+                {/* url per andare all'HomePage, gli vengono passati i drinks e loading*/}
+                <Route path="/"
+                       element={<HomePage drinks={drinks} loading={loading}/>}
+                />
+                {/* url per andare al Menu, gli vengono passati i drinks e loading*/}
+                <Route path="/cocktail"
+                       element={<Menu drinks={drinks} loading={loading}/>}
+                />
+                {/* url per andare alla pagina di dettaglio, la rotta è parametrica :id
                     passiamo tutti i drinks, in cui poi verrà cercato il drink con l'id specifico*/}
-                    <Route path="/cocktail/:id"
-                           element={<CocktailDetails drinks={drinks}/>} />
-                    {/* url per andare alla pagina di Info*/}
-                    <Route path="/info"
-                           element={<Info />} />
-                    {/* qualsisi url che non rientra nei casi pagina precedente porta a DefaultPage*/}
-                    <Route path = "*" element={<DefaultPage />} />
-                </Routes>
-            </MainTemplate>
-        </HashRouter>
+                <Route path="/cocktail/:id"
+                       element={<CocktailDetails drinks={drinks}/>}/>
+                {/* url per andare alla pagina di Info*/}
+                <Route path="/info"
+                       element={<Info/>}/>
+                {/* qualsisi url che non rientra nei casi pagina precedente porta a DefaultPage*/}
+                <Route path="*" element={<DefaultPage/>}/>
+            </Routes>
+        </MainTemplate>
     );
 }
 
