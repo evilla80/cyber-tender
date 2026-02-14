@@ -6,14 +6,15 @@ Cyber Tender permette agli utenti di consultare un elenco di cocktail, permetten
 di visualizzare le loro ricette. 
 
 L'applicazione si interfaccia con [TheCocktailDB API](https://www.thecocktaildb.com/) 
-per fornire dati in tempo reale ed è consultabile tramite **GitHub Pages**.
+per fornire dati in tempo reale ed è consultabile tramite **GitHub Pages** al link 
+https://evilla80.github.io/cyber-tender/ 
 
 ## Tecnologie
 Il progetto è stato realizzato utilizzando le seguenti tecnologie e librerie:
 * React: Libreria per la costruzione dell'interfaccia basata su componenti.
 * Vite: Build tool utilizzato per l'inizializzazione del progetto.
 * React Router Dom: Gestore del routing, che permette la navigazione tra le varie pagine
-(Home, Menu, Dettaglio, Info)senza il ricaricamento della intera pagina.
+(Home, Menu, Dettaglio, Info) senza il ricaricamento della intera pagina.
 * CSS Modules: utilizzati per lo stile dei singoli componenti in modo che il CSS non crei conflitti
 tra le diverse parti dell'app.
 * Fetch API: Standard utilizzato per recuperare i dati dei cocktail dall'API.
